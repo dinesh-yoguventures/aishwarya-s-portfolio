@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, Check, Copy, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import portrait from "@/assets/aishwarya-portrait.jpg.asset.json";
+import portraitUrl from "@/assets/aishwarya-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,7 +42,7 @@ const projects = [
     challenge:
       "Operational teams needed a dependable view of solar, grid, and battery-storage performance across individual sites.",
     contribution:
-      "Aishwarya architected the Angular dashboard experience, integrated backend data, investigated data-quality issues, and implemented site-level tag mappings.",
+      "I architected the Angular dashboard experience, integrated backend data, investigated data-quality issues, and implemented site-level tag mappings.",
     implementation: [
       "Angular 17 dashboard modules",
       "RESTful service integration",
@@ -69,7 +69,7 @@ const projects = [
     challenge:
       "Banking teams required configurable surveillance workflows that could support regulatory monitoring, alerts, and reporting.",
     contribution:
-      "Aishwarya led planning, estimation, frontend development, testing, and delivery for the platform’s surveillance and reporting interfaces.",
+      "I led planning, estimation, frontend development, testing, and delivery for the platform’s surveillance and reporting interfaces.",
     implementation: [
       "Configurable rule-based screens",
       "Surveillance and alert workflows",
@@ -96,7 +96,7 @@ const projects = [
     challenge:
       "The product needed to translate complex banking rules into usable interfaces for capital and risk-weighted asset workflows.",
     contribution:
-      "Aishwarya implemented frontend modules and coordinated with cross-functional teams to maintain quality under strict delivery timelines.",
+      "I implemented frontend modules and coordinated with cross-functional teams to maintain quality under strict delivery timelines.",
     implementation: [
       "Business-rule interfaces",
       "Risk-weighted asset dashboards",
@@ -114,7 +114,7 @@ const experience = [
     period: "FEB 2021 — PRESENT",
     role: "Application Developer · Senior Frontend Engineer",
     company: "IBM India Pvt Ltd.",
-    body: "Leads frontend architecture, Angular modernization, performance programs, reviews, estimations, and release coordination for global enterprise portals.",
+    body: "Lead frontend architecture, Angular modernization, performance programs, reviews, estimations, and release coordination for global enterprise portals.",
   },
   {
     period: "MAY 2018 — DEC 2020",
@@ -249,25 +249,24 @@ function Portfolio() {
       <header className="site-header">
         <div className="nav-wrap">
           <a className="wordmark" href="#top">
-            <span>AS</span>
             <strong>Aishwarya S</strong>
-            <small>Frontend systems · Bangalore</small>
+            <small>Frontend Engineer · Bangalore</small>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
             <a href="#about">
-              <span>01</span>Expertise
+             Expertise
             </a>
             <a href="#projects">
-              <span>02</span>Work
+             Work
             </a>
             <a href="#experience">
-              <span>03</span>Experience
+              Experience
             </a>
             <a href="#practice">
-              <span>04</span>Practice
+              Practice
             </a>
             <a href="#contact">
-              <span>05</span>Contact
+              Contact
             </a>
           </nav>
           <div className="nav-actions">
@@ -295,19 +294,19 @@ function Portfolio() {
         {menuOpen && (
           <nav className="mobile-nav">
             <a href="#about" onClick={() => setMenuOpen(false)}>
-              01 · Expertise
+              02 · Expertise
             </a>
             <a href="#projects" onClick={() => setMenuOpen(false)}>
-              02 · Work
+              03 · Work
             </a>
             <a href="#experience" onClick={() => setMenuOpen(false)}>
-              03 · Experience
+              04 · Experience
             </a>
             <a href="#practice" onClick={() => setMenuOpen(false)}>
               04 · Delivery practice
             </a>
             <a href="#contact" onClick={() => setMenuOpen(false)}>
-              05 · Contact
+             · Contact
             </a>
           </nav>
         )}
@@ -355,9 +354,8 @@ function Portfolio() {
             </div>
           </div>
           <div className="portrait-block rise delay-one">
-            <span className="figure-label">FIG. 01</span>
             <div className="portrait-frame">
-              <img src={portrait.url} alt="Aishwarya S, Senior Frontend Engineer" />
+              <img src={portraitUrl} alt="Aishwarya S, Senior Frontend Engineer" />
             </div>
             <div className="portrait-meta">
               <span>BANGALORE · INDIA</span>
@@ -575,7 +573,7 @@ function Portfolio() {
                   across the full lifecycle.
                 </h2>
                 <p>
-                  A repeatable delivery approach documented across Aishwarya’s enterprise roles.
+                  A repeatable delivery approach refined across my enterprise engineering roles.
                 </p>
               </div>
               <div className="practice-ledger">
@@ -659,7 +657,7 @@ function Portfolio() {
               <p>{selectedProject.challenge}</p>
             </div>
             <div className="drawer-section">
-              <h3>Aishwarya’s contribution</h3>
+              <h3>My contribution</h3>
               <p>{selectedProject.contribution}</p>
             </div>
             <div className="drawer-section">
@@ -711,13 +709,13 @@ function Portfolio() {
             <small>DIRECT CONTACT</small>
             <h2>Start a conversation.</h2>
             <p>
-              Share the opportunity or architecture challenge and Aishwarya will respond directly.
+              Share the opportunity or architecture challenge and I’ll respond directly.
             </p>
             <a
               className="solid-action"
               href="mailto:aishusara52@gmail.com?subject=Frontend%20opportunity"
             >
-              Email Aishwarya <ArrowUpRight size={15} />
+              Email me <ArrowUpRight size={15} />
             </a>
           </div>
         </div>
