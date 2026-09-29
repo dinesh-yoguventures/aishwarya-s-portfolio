@@ -229,6 +229,27 @@ function Portfolio() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    const elements = document.querySelectorAll(".scroll-reveal");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const copyEmail = async () => {
     await navigator.clipboard.writeText("aishusara52@gmail.com");
     setCopied(true);
@@ -332,7 +353,7 @@ function Portfolio() {
             </p>
             <div className="hero-actions">
               <a className="outline-action" href="#projects">
-                <ArrowDownRight size={16} /> View case studies
+                <ArrowDownRight size={16} /> View systems &amp; architecture
               </a>
               <button className="link-action" onClick={() => setBookingOpen(true)}>
                 Book a call <ArrowUpRight size={15} />
@@ -365,14 +386,14 @@ function Portfolio() {
         </section>
 
         <section className="numbered-section" id="about">
-          <div className="section-wrap split-section">
-            <header className="section-index">
-              <span>02</span>
-              <h2>Expertise</h2>
-              <i />
-            </header>
-            <div className="section-content">
-              <div className="expertise-list">
+          <div className="section-wrap about-wrap">
+            <div className="split-section about-split">
+              <header className="section-index scroll-reveal">
+                <span>02</span>
+                <h2>Expertise</h2>
+                <i />
+              </header>
+              <div className="expertise-list scroll-reveal reveal-delay-1">
                 <article>
                   <h3>Frontend architecture</h3>
                   <p>
@@ -395,6 +416,9 @@ function Portfolio() {
                   </p>
                 </article>
               </div>
+            </div>
+
+            <div className="skills-matrix-wrap scroll-reveal reveal-delay-2">
               <div className="skills-matrix" aria-label="Technical skills">
                 {skillGroups.map((group) => (
                   <article key={group.label}>
@@ -407,23 +431,24 @@ function Portfolio() {
                   </article>
                 ))}
               </div>
-              <div className="metric-grid">
-                <div>
-                  <strong>25–30%</strong>
-                  <span>Page load gain</span>
-                </div>
-                <div>
-                  <strong>50K+</strong>
-                  <span>Portal users</span>
-                </div>
-                <div>
-                  <strong>17+</strong>
-                  <span>Angular</span>
-                </div>
-                <div>
-                  <strong>7+</strong>
-                  <span>Years experience</span>
-                </div>
+            </div>
+
+            <div className="metric-grid scroll-reveal reveal-delay-3">
+              <div>
+                <strong>25–30%</strong>
+                <span>Page load gain</span>
+              </div>
+              <div>
+                <strong>50K+</strong>
+                <span>Portal users</span>
+              </div>
+              <div>
+                <strong>17+</strong>
+                <span>Angular</span>
+              </div>
+              <div>
+                <strong>7+</strong>
+                <span>Years experience</span>
               </div>
             </div>
           </div>
@@ -431,7 +456,7 @@ function Portfolio() {
 
         <section className="numbered-section performance" id="performance-lab">
           <div className="section-wrap">
-            <div className="performance-heading">
+            <div className="performance-heading scroll-reveal">
               <div>
                 <div className="eyebrow">
                   <span /> PERFORMANCE LAB
@@ -443,7 +468,7 @@ function Portfolio() {
               </div>
               <p>A practical modernization blueprint shaped by enterprise Angular delivery.</p>
             </div>
-            <div className="performance-console">
+            <div className="performance-console scroll-reveal reveal-delay-1">
               <div className="performance-rail" role="tablist" aria-label="Performance approach">
                 {performanceStages.map((stage, index) => (
                   <button
@@ -486,15 +511,29 @@ function Portfolio() {
         </section>
 
         <section className="numbered-section" id="projects">
-          <div className="section-wrap projects-wrap">
-            <header className="section-index">
-              <span>03</span>
-              <h2>Selected case studies</h2>
-              <i />
-            </header>
+          <div className="section-wrap projects-section-wrap">
+            <div className="split-section projects-header-split">
+              <header className="section-index scroll-reveal">
+                <span>03</span>
+                <h2>Work</h2>
+                <i />
+              </header>
+              <div className="projects-heading-right scroll-reveal reveal-delay-1">
+                <div className="eyebrow">
+                  <span /> PRODUCTION SYSTEMS
+                </div>
+                <h2>
+                  Featured Systems &amp;<br />
+                  Architecture.
+                </h2>
+                <p>
+                  Mission-critical enterprise platforms delivered across Energy telemetry, Banking surveillance, and RegTech compliance.
+                </p>
+              </div>
+            </div>
             <div className="project-list">
               {projects.map((project, index) => (
-                <article className="project-row" key={project.title}>
+                <article className="project-row scroll-reveal" key={project.title}>
                   <div className="project-visual" aria-hidden="true">
                     <span>{project.number}</span>
                     <div className={`diagram diagram-${index + 1}`}>
@@ -536,12 +575,12 @@ function Portfolio() {
 
         <section className="numbered-section" id="experience">
           <div className="section-wrap split-section">
-            <header className="section-index">
+            <header className="section-index scroll-reveal">
               <span>04</span>
               <h2>Experience</h2>
               <i />
             </header>
-            <ol className="timeline">
+            <ol className="timeline scroll-reveal reveal-delay-1">
               {experience.map((item, index) => (
                 <li key={item.period}>
                   <span className={index === 0 ? "active-dot" : ""} />
@@ -557,13 +596,13 @@ function Portfolio() {
 
         <section className="numbered-section practice-section" id="practice">
           <div className="section-wrap practice-wrap">
-            <header className="section-index">
+            <header className="section-index scroll-reveal">
               <span>05</span>
               <h2>Delivery practice</h2>
               <i />
             </header>
             <div className="practice-content">
-              <div className="practice-intro">
+              <div className="practice-intro scroll-reveal reveal-delay-1">
                 <div className="eyebrow">
                   <span /> FROM SPECIFICATION TO SUPPORT
                 </div>
@@ -572,13 +611,10 @@ function Portfolio() {
                   <br />
                   across the full lifecycle.
                 </h2>
-                <p>
-                  A repeatable delivery approach refined across my enterprise engineering roles.
-                </p>
               </div>
               <div className="practice-ledger">
-                {deliveryPractices.map((item) => (
-                  <article key={item.index}>
+                {deliveryPractices.map((item, idx) => (
+                  <article key={item.index} className={`scroll-reveal reveal-delay-${(idx % 4) + 1}`}>
                     <span>{item.index}</span>
                     <div>
                       <h3>{item.title}</h3>
@@ -592,7 +628,7 @@ function Portfolio() {
         </section>
 
         <section className="contact-section" id="contact">
-          <div className="section-wrap contact-grid">
+          <div className="section-wrap contact-grid scroll-reveal">
             <div>
               <div className="eyebrow">
                 <span /> CONTACT
@@ -741,7 +777,7 @@ function Portfolio() {
             {[
               ["Expertise", "#about"],
               ["Performance Lab", "#performance-lab"],
-              ["Selected Work", "#projects"],
+              ["Featured Systems & Architecture", "#projects"],
               ["Experience", "#experience"],
               ["Delivery Practice", "#practice"],
               ["Contact", "#contact"],

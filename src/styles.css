@@ -389,12 +389,43 @@ h1 {
 .numbered-section {
   border-top: 1px solid var(--border);
 }
-.split-section,
-.projects-wrap {
+.split-section {
   display: grid;
   grid-template-columns: 4fr 8fr;
   gap: 60px;
   padding-block: 104px;
+}
+.projects-section-wrap {
+  padding-block: 104px;
+}
+.projects-header-split {
+  padding-block: 0 48px;
+}
+.projects-heading-right h2 {
+  margin: 14px 0 0;
+  font-family: "Libre Baskerville", serif;
+  font-size: clamp(34px, 4.5vw, 58px);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.projects-heading-right > p {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: var(--muted-foreground);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.about-wrap {
+  padding-block: 104px;
+}
+.about-split {
+  padding-block: 0;
+}
+.section-index {
+  position: sticky;
+  top: 96px;
+  align-self: start;
 }
 .section-index > span {
   display: block;
@@ -445,16 +476,18 @@ h1 {
   font-size: 14px;
   line-height: 1.7;
 }
+.skills-matrix-wrap {
+  margin-top: 48px;
+}
 .skills-matrix {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 42px;
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--border);
   border-left: 1px solid var(--border);
 }
 .skills-matrix article {
   min-width: 0;
-  padding: 25px;
+  padding: 24px;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: color-mix(in oklab, var(--ivory) 82%, transparent);
@@ -468,15 +501,16 @@ h1 {
   transform: translateY(-4px);
 }
 .skills-matrix h3 {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: var(--cherry);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 .skills-matrix ul {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 18px;
+  grid-template-columns: 1fr;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -500,7 +534,7 @@ h1 {
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 42px;
+  margin-top: 24px;
   border: 1px solid var(--border);
   background: var(--border);
   gap: 1px;
@@ -678,9 +712,10 @@ h1 {
 }
 .project-row {
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 52px;
-  padding: 58px 0;
+  grid-template-columns: 5.5fr 6.5fr;
+  gap: 60px;
+  align-items: center;
+  padding: 64px 0;
   border-top: 1px solid var(--border);
 }
 .project-visual {
@@ -1143,6 +1178,35 @@ footer a:hover {
 .delay-one {
   animation-delay: 0.14s;
 }
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+.reveal-delay-4 {
+  transition-delay: 0.4s;
+}
+
 @media (max-width: 900px) {
   .desktop-nav,
   .desktop-only {
@@ -1181,7 +1245,8 @@ footer a:hover {
   .project-row {
     grid-template-columns: 1fr;
   }
-  .performance-heading {
+  .performance-heading,
+  .projects-heading {
     align-items: start;
     flex-direction: column;
   }
@@ -1214,6 +1279,9 @@ footer a:hover {
   .contact-actions {
     padding: 0;
     border: 0;
+  }
+  .skills-matrix {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
@@ -1462,27 +1530,19 @@ footer a:hover {
   padding-block: 104px;
 }
 .practice-intro {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  align-items: end;
-  gap: 44px;
-  padding-bottom: 42px;
+  display: block;
+  padding-bottom: 38px;
   border-bottom: 1px solid var(--border);
 }
 .practice-intro .eyebrow {
-  grid-column: 1 / -1;
+  margin-bottom: 16px;
 }
 .practice-intro h2 {
   margin: 0;
-  font-size: clamp(34px, 4vw, 52px);
-  line-height: 1.12;
+  max-width: 860px;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.15;
   font-weight: 400;
-}
-.practice-intro > p {
-  margin: 0;
-  color: var(--muted-foreground);
-  font-size: 14px;
-  line-height: 1.7;
 }
 .practice-ledger article {
   display: grid;
