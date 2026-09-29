@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, Check, Copy, Menu, Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import portraitUrl from "@/assets/aishwarya-portrait.jpg";
-
+//test
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
